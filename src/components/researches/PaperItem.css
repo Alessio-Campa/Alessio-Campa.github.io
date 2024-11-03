@@ -1,0 +1,82 @@
+#papers-container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.paper-card {
+    margin: 1rem;
+    padding: 1rem;
+    border: lightgray 1px solid;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: .5s;
+    scale: 100%;
+    display: flex;
+}
+
+.image-container {
+    width: 33%;
+}
+
+.paper-page {
+    width: 100%;
+}
+
+.loading-page {
+    height: auto;
+}
+
+.paper-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 66%;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.paper-button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1.15rem;
+    text-transform: capitalize;
+    color: black;
+    text-decoration: none;
+}
+
+.open-button {
+    background-color: #35bd35;
+}
+
+.download-button {
+    background-color: #379bfd;
+}
+
+.paper {
+    width: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+    .paper{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .image-container{
+        display: none;
+    }
+    .paper-detail{
+        width: 100%;
+    }
+}
