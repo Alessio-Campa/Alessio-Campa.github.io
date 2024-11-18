@@ -1,6 +1,6 @@
 import "./Navbar.css"
 import NavbarItem from "./NavbarItem";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import MenuTabItem from "./MenuTabItem";
@@ -43,7 +43,9 @@ const Navbar = () => {
 
   return (
     <div id="navbar">
-      <h1 id="name">Alessio <span style={{paddingLeft: "0.5rem", fontWeight: "lighter"}}>Campanelli</span></h1>
+      <Link to="/">
+        <h1 id="name">Alessio <span style={{paddingLeft: "0.5rem", fontWeight: "lighter"}}>Campanelli</span></h1>
+      </Link>
       <div id="menu-tab" className={isMenuOpen ? "open" : ""}>
         {tabs.map(({name, href}) => (
           <MenuTabItem key={name} href={href} isActive={pathname === href}>

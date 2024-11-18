@@ -1,6 +1,4 @@
 import {Paper} from "../../data/Papers";
-import {useEffect, useState} from "react";
-import PdfToImg from "pdftoimg-js/browser";
 import "./PaperItem.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowUpRightFromSquare} from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
@@ -8,26 +6,16 @@ import {faFileArrowDown} from "@fortawesome/free-solid-svg-icons/faFileArrowDown
 
 
 interface PaperItemProps extends Paper {
+  fullWidth?: boolean;
 }
 
-const PaperItem = ({name, authors, date, publication, fileName, doi}: PaperItemProps) => {
-  const [image, setImage] = useState<string>()
-
-  useEffect(() => {
-    fetch(`/papers/${fileName}.pdf`).then(response => {
-      response.arrayBuffer().then(pdf => {
-        PdfToImg(pdf, {pages: 1, scale: 5}).then(images => {
-          setImage(images)
-        })
-      });
-    });
-  }, [fileName]);
+const PaperItem = ({name, authors, date, publication, fileName, doi, fullWidth = false}: PaperItemProps) => {
 
   return (
-    <div className="paper">
+    <div className="paper" style={fullWidth ? {width: "100%"} : {}}>
       <div className="paper-card">
         <div className="image-container">
-          <img className="paper-page" src={image} alt="First page"/>
+          <img className="paper-page" src={`/papers/${fileName}.png`} alt={fileName}/>
         </div>
         <div className="paper-detail">
           <div>
@@ -39,12 +27,12 @@ const PaperItem = ({name, authors, date, publication, fileName, doi}: PaperItemP
             {doi &&
             <a href={`https://doi.org/${doi}`} target="_blank" className="paper-button open-button">
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} style={{marginRight: "0.75rem"}}/>
-              Open
+              DOI
             </a>
             }
             <a href={`/papers/${fileName}.pdf`} target="_blank" className="paper-button download-button">
               <FontAwesomeIcon icon={faFileArrowDown} style={{marginRight: "0.75rem"}}/>
-              Download
+              Open PDF
             </a>
           </div>
         </div>

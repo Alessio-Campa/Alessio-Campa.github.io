@@ -16,10 +16,13 @@
 }
 
 .image-container {
+    display: flex;
+    align-items: center;
     width: 33%;
 }
 
 .paper-page {
+    border-radius: 4px;
     width: 100%;
 }
 
